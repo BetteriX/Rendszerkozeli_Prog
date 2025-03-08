@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "operator.h": "c"
+        "operator.h": "c",
+        "limits.h": "c"
     }
 }
