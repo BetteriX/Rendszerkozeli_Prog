@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <unistd.h>
 #include <sys/stat.h>
 #include <pwd.h>
 #include <time.h>
 #include <string.h>
+
+int numFiles = 0;
+int numDirs = 0;
 
 typedef struct node
 {
@@ -12,6 +16,7 @@ typedef struct node
     struct node *large;
     struct node *small;
 } Node;
+Node *root = NULL;
 
 int Insert(Node **N, long int data)
 {
@@ -39,11 +44,11 @@ int Insert(Node **N, long int data)
     }
 }
 
-long int dirTree(char *dirname; int level)
+long int dirTree(char *dirname, int level)
 {
     int i;
     long int size = 0l;
-    DIR d *;
+    DIR *d;
     struct dirent *de;
     struct stat inode;
     chdir(dirname);
@@ -93,6 +98,7 @@ int main(int argc, char *argv[])
     printf("Tree of \'%s\' directory:\n", getenv("PWD"));
     size = dirTree(".", 1);
     printf("Total size: %ld bytes.\n", size);
-    printf("");
+    printf("Number of Files: %d\n", numFiles);
+    printf("Number of Directories: %d\n", numDirs);
     return 0;
 }
