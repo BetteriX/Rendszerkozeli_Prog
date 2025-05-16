@@ -12,12 +12,15 @@ int main()
     {
         time(&T1);
         T2 = localtime(&T1);
-        printf("%d\n", 60 - (*T2).tm_sec);
+        int sec = 60 - (*T2).tm_sec;
+        printf("%d\n", sec);
         sleep(1);
+        /*
         if ((60 - (*T2).tm_sec) == 30)
         {
             system("sudo reboot now");
         }
+        */
     }
 
     return 0;
